@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import "./video.css";
 import VideoFooter from "./VideoFooter";
 import VideoSidebar from "./VideoSidebar";
-function Video() {
+function Video({ url, channel, description, song, likes, shares, comments }) {
   const [playing, setPlaying] = useState(false);
   const videoRef = useRef(null);
 
@@ -24,11 +24,11 @@ function Video() {
         loop
         ref={videoRef}
         className="video-player"
-        src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
+        src={url}
       />
 
-      <VideoFooter />
-      {/* {video sidebar} */}
+      <VideoFooter channel={channel} description={description} song={song} />
+      <VideoSidebar likes={likes} shares={shares} comments={comments} />
     </div>
   );
 }
